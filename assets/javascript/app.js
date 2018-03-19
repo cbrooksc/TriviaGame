@@ -1,20 +1,40 @@
 $(document).ready(function() {
 
     //var timer = 0;
-    var answers = ["New England","10 ft","2002","Deion Sanders","China"];
+    // var answers = ["New England","10 ft","2002","Deion Sanders","China"];
     var correctGuesses = 0;
     var incorrectGuesses = 0;
-    var unanswered = 0;
+    //var unanswered = 0;
     var number = 15;
-    var intervalId = 0 ;
-    var questions = {
-                q1:"Which NFL team overcame a 25-defict to win the 2017 Superbowl?",
-                q2:"What is the regualation height for a basketball gaol?",
-                q3:"In what year did the Houston Texans join the NFL?",
-                q4:"Who is the only athelete ever to play in a Super Bowl and World Series?",
-                q5:"The art of kung fu originated in which country?"
+    var intervalId ;
+    var questions = [
+    {
+                questions:"Which NFL team overcame a 25-defict to win the 2017 Superbowl?",
+                answers:['Philadelphia Eagles','New England','Denver Broncos'],
+                correctGuesses: 1,
+     }, 
+     {
+                questions:"What is the regualation height for a basketball gaol?",
+                answers:['12ft','10ft','8ft'],
+                correctGuesses: 1,
+     },
+     {
+                questions:"In what year did the Houston Texans join the NFL?",
+                answers:['2017','1996','2002'],
+                correctGuesses: 2,
+     },        
+     {
+               questions:"Who is the only athelete ever to play in a Super Bowl and World Series?",
+               answers:['Deion Sanders','Mike Tyson','Ken Griffin Jr'],
+               correctGuesses: 1,
+    },
+    {
+               questions:"The art of kung fu originated in which country?",
+               answers:['Japan','China','United States'],
+               correctGuesses: 2,
 
-    };
+    },
+            ];
 
     
 // Starts the timer when the button is clicked
@@ -24,7 +44,7 @@ $(document).ready(function() {
     });
 
 //Stops the timer when the button is clicked
-    $("#done").on("click", done);
+    // $(".btn btn-default").on("click", done);
 
 //Set the interval to run the next function decrement
 //The decrement function will decrease the time until it hit zero
@@ -37,15 +57,9 @@ $(document).ready(function() {
  //Displays the number in the time remaining tag
  $("#timeremaining").html("<h2>" + number + "<h2>");
         }, 1000);  
-              
- //Displays the number in the time remaining tag
-//  $("#timeremaining").html("<h2>" + number + "<h2>");
- 
-        //    if (number === 0) {
-        //      done();
-        //    }
-           
-        }
+       
+                 
+   }
 
  //  The stop function to stop the timer
     function done() {
@@ -54,51 +68,105 @@ $(document).ready(function() {
       intervalId = setInterval(function(){
 
         if ( number === 0);
-        clearInterval(number);     
-        
-        gameover();
+        $("timeremaining").empty();     
+    
 
       });
     }
 
-    
-    // function stats(){
-
-
-    // }
-
-
-    function gameover() {
-//calls the done function to stop the timer
+    function setupQuestions() {
+        // Grab the data-question attribute
+       // Grab the radio that is checked.
+      // Compare the value of the checked one to the value of the answer in the question. 
         
+      var $questionsSection = $('.questions-section');
 
-        for(var i = 0; i < answers.length; i++){
+        for (var i = 0; i < questions.length; i++) {
+            var $divRow = $('<div>').addClass('row text-center');
 
-// Finding the correct answer with the question, then adding one to the guessses
-        if ((questions.q1 = answers[0]) || (questions.q2 = answers[1] ))
-            correctGuesses ++;  
-//Appends the correct guesses to h2 element
-            $("<h2>").append("<h2>" + correctGuesses + "<h2>");
+            var $questionDiv = $('<div>').addClass('questions')
+            .attr('data-question', i);
 
-        } if ((questions.q3 = answers[2]) || (questions.q4 = answers[3]) ||(questions.q5 =answers[4] ) ) {
-            correctGuesses ++;
-//Appends the correct guesses to h2 element
-            $("<h2>").append("<h2>" + correctGuesses + "<h2>");
+            $questionDiv.append('<h3>' + questions[i].questions + '</h3>');
 
-        } else if (questions > answers) {
-            incorrectGuesses ++;
-//Appends the incorrect guesses to h2 element
-         $("<h2>").append("<h2>" + incorrectGuesses + "<h2>");  
-         
-        } else { ((questions = "" ) || (answers = "" )) 
+            questions[i].answers.map(function(answer, f) {
+                $questionDiv.append(
+                    '<div class="radio">\n' +
+                    '    <label>\n' +
+                    '       <input type="radio" name="question_' + i + '" value="' + f + '">' + answer +
+                    ' </label>\n' +
+                    '</div>'
+                );
+            });
 
-             unanswered ++;
+            $divRow.append($questionDiv);
 
-//Appends the unanswered guesses to h2 element
-     $("<h2>").append("<h2>" + unanswered + "<h2>");  
-         
-    }  
+            $questionsSection.append($divRow);
+        }
  }
+
+              $('button').on('click', function() {
+                 console.log('Done clicked...');
+
+                  var $questions = $('.question');
+
+                 $questions.each(function(index, item) {
+                 var $item = $(item);
+                 var currentQuestion = $item.attr('data-question');
+                 var selectedAnswer = $item.find('input:checked').val();
+
+               console.log('Current Question: ', currentQuestion, 'Selected Answer: ', selectedAnswer);
+
+                if (questions[currentQuestion].correctGuesses == selectedAnswer) {
+                          correctGuesses ++;
+                      }
+                              else {
+                                      incorrectGuesses ++;
+                             }
+
+    });
+                //  console.log('Correct Answers:', correctGuesses);
+                 //console.log('Incorrect Answers:', incorrectGuesses);
+
+                         setupQuestions();
+
+                           function stats(){
+
+                            if(questions[currentQuestion].correctGuesses === selectedAnswer) {
+
+                                ("questions-section").html('correcrtGuesses');
+
+                                done();
+                            }
+                                else {
+                                    ("questions-section").html('incorrectGuesses');
+
+                                        done();
+
+                                }
+                            
+
+                              
+
+                      }
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 });

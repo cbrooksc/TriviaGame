@@ -1,4 +1,4 @@
-<DOCTYPE <!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -6,6 +6,8 @@
     <title>Trivia </title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css"media="screen" href="assets/css/reset.css" >
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" >
     
@@ -13,100 +15,32 @@
 </head>
 <body>
 
-<form>
-    <h1 id="head">Sports Trivia Time</h1>
 
+    <h1 id="head">Sports Trivia Time</h1>
+    <br>
     <h2 id="timeremaining" >Time Remaining: </h2>
     <br>
-    <button type="submit" id="start"> Start </button>
+    
     <br>
 
  <div class="container">
     
-    <fieldset class="radiogroup1"> 
-        <p>Question 1</p>
-        <br>  
-        <p>Which NFL team overcame a 25-defict to win the 2017 Superbowl?</p>
-        <br>
+    <div class="questions-section">
+
+    </div>
           
-            <input type="radio" name="delivery" id="eagles" value="Philadelphia Eagles"> Philadelphia Eagles</>
-            <input type="radio" name="delivery" id="pats" value="New England" >New England</>
-            <input type="radio" name="delivery" id="broncos" value="Denver Broncos" >Denver Broncos</> 
-          
-  </fieldset> 
+    <button type="button" class="btn btn-default"> Done </button>
 
 </div>
-<br>
 
-<div class="container">
+    <button type="button" id="start"> Start </button>
     
-  <fieldset class="radiogroup2"> 
-    <<p>Question 2</p>
-    <br>
-    <p>What is the regualation height for a basketball gaol?</p>
-    <br>
-      
-        <input type="radio" name="delivery" id="twelve" value="12ft"> 12ft</>
-        <input type="radio" name="delivery" id="ten" value="10ft" >10ft</>
-        <input type="radio" name="delivery" id="eight" value="8ft" >8ft</> 
-      
-  </fieldset> 
-</div>
-<br>
-
-<div class="container">
     
-     <fieldset class="radiogroup3"> 
-      <p>Question 3</p>
-      <br>
-      <p>In what year did the Houston Texans join the NFL?</p>
-      <br>
-        
-          <input type="radio" name="delivery" id="seven" value="2017">2017</>
-          <input type="radio" name="delivery" id="six" value="1996" >1996</>
-          <input type="radio" name="delivery" id="two" value="2002" >2002</> 
-        
-      
-</div>
-<br>
-
-<div class="container">
-    
-  <fieldset class="radiogroup4"> 
-    <p>Question 4</p> 
-    <br>
-    <p>Who is the only athelete ever to play in a Super Bowl and World Series?</p>
-    <br>
-      
-        <input type="radio" name="delivery" id="sanders" value="Deion Sanders">Deion Sanders</>
-        <input type="radio" name="delivery" id="tyson" value="Mike Tyson" >Mike Tyson</>
-        <input type="radio" name="delivery" id="ken" value="Ken Griffin Jr" >Ken Griffin Jr</> 
-      
-      
-</div>
-<br>
-
-<div class="container">
-    
-    <fieldset class="radiogroup5"> 
-      <p>Question 5</p>
-        <p>The art of kung fu originated in which country? </p>
-        <br>
-         
-            <input type="radio" name="delivery" id="japan" value="Japan" >Japan</>
-            <input type="radio" name="delivery" id="china" value="China" >China</>
-            <input type="radio" name="delivery" id="usa" value="USA">United States</> 
-          
-        
-</div>
-<br>
-
-    <button type="button" id="done">Done</button>
-
-</form>
 
 
 
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script type= "text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="assets/javascript/app.js"></script>  
 </body>
